@@ -1,0 +1,6 @@
+# Keep Linux line endings so Git Bash can run the scripts on Windows
+*.sh   text eol=lf
+*.js   text eol=lf
+*.json text eol=lf
+*.yml  text eol=lf
+*.md   text eol=lf

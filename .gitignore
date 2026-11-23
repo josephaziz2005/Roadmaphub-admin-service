@@ -1,0 +1,22 @@
+# Dependencies and build output
+node_modules/
+*.zip
+
+# Secrets and local settings: NEVER commit these
+.env
+.env.*
+!.env.example
+*.pem
+*.key
+
+# Local runtime files
+logs/
+*.log
+.run/
+evidence/raw/
+k6/results/*.json
+
+# OS / editor
+.DS_Store
+Thumbs.db
+.vscode/
