@@ -16,6 +16,7 @@
     "setup:iam": "bash infra/scripts/create-iam.sh",
     "setup:all": "bash infra/scripts/create-secrets.sh && bash infra/scripts/create-tables.sh && bash infra/scripts/create-sns.sh && bash infra/scripts/create-monitoring.sh && bash infra/scripts/create-eventbridge.sh && bash infra/scripts/create-iam.sh",
     "check:aws": "bash infra/scripts/check-admin.sh",
+    "security:evidence": "node scripts/run-security-tests.js",
     "create-admin": "bash infra/scripts/create-admin.sh"
   },
   "engines": {
