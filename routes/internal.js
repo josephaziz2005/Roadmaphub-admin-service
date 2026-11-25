@@ -2,6 +2,7 @@
 const express = require('express');
 const { internalAuth, validate: v } = require('../shared');
 const repos = require('../repositories');
+const snsAlertService = require('../services/snsAlertService');
 
 const router = express.Router();
 const need = (scope) => internalAuth.requireService('admin', scope);
@@ -27,6 +28,14 @@ router.post('/identity/users/contacts', need('identity:contacts'), async (req, r
   res.status(200).json({
     items: users.filter((u) => u.accountStatus !== 'banned').map((u) => ({ userId: u.userId, name: u.name, email: u.email }))
   });
+});
+
+// Operational alerts pushed by AWS SNS (topic: roadhub-ops-alerts).
+// SNS sends JSON with Content-Type: text/plain, so express.text accepts it alongside application/json.
+// Never exposed through the public gateway (:8080 returns 404 for /internal/*).
+router.post('/alerts/sns', express.text({ type: '*/*', limit: '32kb' }), async (req, res) => {
+  const result = await snsAlertService.handleMessage(req.body, { ip: req.ip, requestId: req.id });
+  res.status(200).json(result);
 });
 
 module.exports = router;

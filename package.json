@@ -10,6 +10,7 @@
     "test": "node --test --test-concurrency=1 tests/*.test.js",
     "setup:tables": "bash infra/scripts/create-tables.sh",
     "setup:secrets": "bash infra/scripts/create-secrets.sh",
+    "setup:sns": "bash infra/scripts/create-sns.sh",
     "create-admin": "bash infra/scripts/create-admin.sh"
   },
   "engines": {
