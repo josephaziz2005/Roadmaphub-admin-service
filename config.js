@@ -13,6 +13,11 @@ module.exports = {
     opsTopicName,
     opsTopicArn: process.env.OPS_TOPIC_ARN || `arn:aws:sns:${awsRegion}:${awsAccountId}:${opsTopicName}`
   },
+  cloudwatch: {
+    logGroup: process.env.CLOUDWATCH_LOG_GROUP || '',
+    logStream: process.env.CLOUDWATCH_LOG_STREAM || 'admin-service',
+    enabled: process.env.CLOUDWATCH_LOGS !== 'off'
+  },
   tokenLifetimeSeconds: 3600,          // logins last 1 hour
   bcryptRounds: Number(process.env.BCRYPT_ROUNDS) || 10,
   lockAfterFailures: 5,                // 5 wrong passwords in a row ...
