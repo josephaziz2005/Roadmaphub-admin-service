@@ -12,6 +12,7 @@
     "setup:secrets": "bash infra/scripts/create-secrets.sh",
     "setup:sns": "bash infra/scripts/create-sns.sh",
     "setup:monitoring": "bash infra/scripts/create-monitoring.sh",
+    "setup:events": "bash infra/scripts/create-eventbridge.sh",
     "create-admin": "bash infra/scripts/create-admin.sh"
   },
   "engines": {
